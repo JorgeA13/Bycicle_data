@@ -3,7 +3,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 
 train_df = pd.read_csv('Datos/train_set.csv')
-train_df = train_df.dropna()
+train_df = train_df.fillna(0)
+train_df = train_df[train_df['passholder_type'] != 0]
 
 features = train_df[['duration', 'start_lat', 'start_lon',
                      'end_lat', 'end_lon', 'trip_route_category',
