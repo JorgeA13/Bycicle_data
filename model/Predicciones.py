@@ -15,5 +15,6 @@ test_dummies = pd.concat([test_features, trip], axis=1)
 test_dummies = test_dummies.drop(['trip_route_category'], axis=1)
 
 results = model_prediction(test_dummies)
+results = pd.Series(results, name='passholder_type')
 results_csv = pd.concat([test_df['trip_id'], results], axis=1)
-results_csv.to_csv('model/Resultados.csv')
+results_csv.to_csv('model/Resultados.csv', index=False)
